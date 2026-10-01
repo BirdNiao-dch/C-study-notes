@@ -1,6 +1,5 @@
-无参无返回值
+//无参无返回值
 
-```c
 #include<stdio.h>
 void printhello() {
     printf("hello\n");
@@ -9,11 +8,9 @@ int main() {
     printhello();
     return 0;
 }
-```
 
-无参有返回值
+//无参有返回值
 
-```c
 #include<stdio.h>
 int getnumber() {
     return 123;
@@ -23,11 +20,9 @@ int main() {
     printf("%d\n", num);
     return 0;
 }
-```
 
-有参无返回值
+//有参无返回值
 
-```c
 #include<stdio.h>
 void printmax(int a, int b) {
     int max = a > b ? a : b;
@@ -39,11 +34,9 @@ int main() {
     printmax(a,b);
     return 0;
 }
-```
 
-有参有返回值
+//有参有返回值
 
-```c
 #include<stdio.h>
 int max(int a, int b) {
     return a > b ? a : b;
@@ -55,6 +48,5 @@ int main() {
     printf("%d\n", n);
     return 0;
 }
-```
 
 
