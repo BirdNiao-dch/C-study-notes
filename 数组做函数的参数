@@ -1,0 +1,48 @@
+<font style="color:#117CEE;">数组传参的重点知识</font>  
+1.函数的形式参数要和函数的实参个数匹配  
+2.函数的实参是数组，形参也是可以写成数组形式的  
+3.形参如果是一维数组，数组大小可以省略不写  
+4.形参如果是二维数组，行可以省略，但是列不能省略  
+5.数组传参，形参是不会创建新的数组的  
+6.形参操作的数组和实参的数组是同一个数组
+
+<font style="color:#2F4BDA;">例：将数组中的每个数都设置为-1</font>
+
+```c
+#include<stdio.h> 
+void set_arr(int arr2[], int sz2) {       //定义函数，可以是无返回值的
+    int i = 0;                            //注：一维数组可以省略数组大小
+    for (i = 0;i < sz2;i++) {             //遍历数组，将每个数都设置为-1
+        arr2[i] = -1;
+    }
+}
+void print_arr(int arr2[], int sz2) {     //定义一个打印的函数，可以是无返回值的
+    int i = 0;
+    for (i = 0;i < sz2;i++) {             //打印数组中的每一个数
+        printf("%d\n", arr2[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int arr[10] = { 0 };
+    int sz = sizeof(arr) / sizeof(arr[10]);
+    set_arr(arr,sz);   
+    print_arr(arr, sz);
+    return 0;
+}
+```
+
+**<font style="color:#1DC0C9;">地址传递的本质（不使用深入指针语法）</font>**
+
++ <font style="color:rgb(31, 35, 40);">数组名（如 a）代表“从哪里开始”的信息（起始地址）。</font>
++ <font style="color:rgb(31, 35, 40);">传数组给函数；你不是把每个元素复制一遍传入函数，而是把“起始地址”交给函数。函数通过这个地址能直接访问并改写原数组的内容。</font>
+3. <font style="color:rgb(31, 35, 40);">数组作为函数参数时会退化为指针</font>
++ <font style="color:rgb(31, 35, 40);">传数组给函数时，函数里看到的不是整个数组，而是指针。</font>
++ <font style="color:rgb(31, 35, 40);">所以</font>_<font style="color:rgb(31, 35, 40);">在函数内部</font>_<font style="color:rgb(31, 35, 40);">：</font>
+    - <font style="color:rgb(31, 35, 40);">sizeof(arr) 不是数组大小，而是</font>_<font style="color:rgb(31, 35, 40);">指针大小；</font>_
+    - <font style="color:rgb(31, 35, 40);">这就是为什么</font><font style="color:#DF2A3F;">函数里不能用 sizeof 来求数组长度。</font>
+
+<font style="color:rgb(31, 35, 40);">所以正确写法是：</font>
+
++ <font style="color:#DF2A3F;">在 main 中计算长度；</font>
++ <font style="color:#DF2A3F;">把长度也传进函数。</font>
